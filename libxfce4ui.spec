@@ -34,7 +34,8 @@ BuildRequires:	xfconf-devel >= 4.7.3
 BuildRequires:	xorg-lib-libSM-devel
 Requires(post,postun):	gtk+2
 Requires(post,postun):	hicolor-icon-theme
-Requires:	xfconf >= %{version}
+#Requires:	xfconf >= %{version}
+Requires:	xfconf >= 4.7.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -62,7 +63,7 @@ Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gtk+2-devel >= 2:2.10.6
 #Requires:	libxfce4util-devel >= %{version}
-Requires:	libxfce4util-devel >= %{version}
+Requires:	libxfce4util-devel >= 4.7.3
 Requires:	startup-notification-devel >= 0.8
 #Requires:	xfconf-devel >= %{version}
 Requires:	xfconf-devel >= 4.7.3
