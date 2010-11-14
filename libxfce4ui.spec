@@ -45,20 +45,20 @@ Various GTK+ widgets for Xfce.
 Różne widgety GTK+ dla Xfce.
 
 %package apidocs
-Summary:	libxfcegui4 API documentation
-Summary(pl.UTF-8):	Dokumentacja API libxfcegui4
+Summary:	libxfce4ui API documentation
+Summary(pl.UTF-8):	Dokumentacja API libxfce4ui
 Group:		Documentation
 Requires:	gtk-doc-common
 
 %description apidocs
-libxfcegui4 API documentation.
+libxfce4ui API documentation.
 
 %description apidocs -l pl.UTF-8
-Dokumentacja API libxfcegui4.
+Dokumentacja API libxfce4ui.
 
 %package devel
-Summary:	Development files for libxfcegui4 library
-Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libxfcegui4
+Summary:	Development files for libxfce4ui library
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libxfc4ui
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gtk+2-devel >= 2:2.10.6
@@ -70,34 +70,34 @@ Requires:	xfconf-devel >= 4.7.3
 Requires:	xorg-lib-libSM-devel
 
 %description devel
-Development files for the libxfcegui4 library.
+Development files for the libxfce4ui library.
 
 %description devel -l pl.UTF-8
-Pliki nagłówkowe biblioteki libxfcegui4.
+Pliki nagłówkowe biblioteki libxfce4ui.
 
 %package static
-Summary:	Static libxfcegui4 library
-Summary(pl.UTF-8):	Statyczna biblioteka libxfcegui4
+Summary:	Static libxfce4ui library
+Summary(pl.UTF-8):	Statyczna biblioteka libxfce4ui
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
-Static libxfcegui4 library.
+Static libxfce4ui library.
 
 %description static -l pl.UTF-8
-Statyczna biblioteka libxfcegui4.
+Statyczna biblioteka libxfce4ui.
 
-%package -n glade3-libxfcegui4
-Summary:	libxfcegui4 support for Glade 3
-Summary(pl.UTF-8):	Wsparcie dla libxfcegui4 w Glade 3
+%package -n glade3-libxfce4ui
+Summary:	libxfce4ui support for Glade 3
+Summary(pl.UTF-8):	Wsparcie dla libxfce4ui w Glade 3
 Group:		Development/Building
 Requires:	glade3
 
-%description -n glade3-libxfcegui4
-libxfcegui4 support for Glade 3.
+%description -n glade3-libxfce4ui
+libxfce4ui support for Glade 3.
 
-%description -n glade3-libxfcegui4 -l pl.UTF-8
-Wsparcie dla libxfcegui4 w Glade 3.
+%description -n glade3-libxfce4ui -l pl.UTF-8
+Wsparcie dla libxfce4ui w Glade 3.
 
 %prep
 %setup -q
@@ -164,7 +164,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libxfce4ui-1.a
 %endif
 
-%files -n glade3-libxfcegui4
+%files -n glade3-libxfce4ui
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/glade3/modules/libxfce4uiglade.so
 %{_datadir}/glade3/catalogs/libxfce4ui.xml
