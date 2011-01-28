@@ -5,37 +5,33 @@
 Summary:	Various GTK+ widgets for Xfce
 Summary(pl.UTF-8):	Różne widgety GTK+ dla Xfce
 Name:		libxfce4ui
-Version:	4.7.4
-Release:	0.1
+Version:	4.8.0
+Release:	1
 License:	LGPL v2
 Group:		X11/Libraries
-Source0:	http://www.xfce.org/archive/xfce/4.8pre1/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	4d3cc02c6b09552b940d5d09245e8934
-URL:		http://www.xfce.org/projects/libraries/
+Source0:	http://archive.xfce.org/xfce/4.8/src/libxfce4ui-4.8.0.tar.bz2
+# Source0-md5:	df9acb3328dff905bd0777b84532b69f
+URL:		http://www.xfce.org/projects/libxfce4
 BuildRequires:	autoconf >= 2.50
-BuildRequires:	automake
+BuildRequires:	automake >= 1:1.8
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
-BuildRequires:	gtk+2-devel >= 2:2.10.6
+BuildRequires:	glib2-devel >= 1:2.16.0
+BuildRequires:	gtk+2-devel >= 2:2.14.0
 BuildRequires:	gtk-doc
 BuildRequires:	gtk-doc-automake
 BuildRequires:	intltool
-BuildRequires:	libglade2-devel >= 1:2.6.0
 BuildRequires:	libgladeui-devel >= 3.0.0
 BuildRequires:	libtool
-#BuildRequires:	libxfce4util-devel >= %{version}
-BuildRequires:	libxfce4util-devel >= 4.7.3
+BuildRequires:	libxfce4util-devel >= %{version}
 BuildRequires:	pkgconfig >= 1:0.9.0
-BuildRequires:	rpmbuild(macros) >= 1.311
+BuildRequires:	rpmbuild(macros) >= 1.601
 BuildRequires:	startup-notification-devel >= 0.8
 BuildRequires:	xfce4-dev-tools >= 4.7.0
-#BuildRequires:	xfconf-devel >= %{version}
-BuildRequires:	xfconf-devel >= 4.7.3
+BuildRequires:	xfconf-devel >= %{version}
 BuildRequires:	xorg-lib-libSM-devel
-Requires(post,postun):	gtk+2
-Requires(post,postun):	hicolor-icon-theme
-#Requires:	xfconf >= %{version}
-Requires:	xfconf >= 4.7.3
+Requires:	hicolor-icon-theme
+Requires:	xfconf >= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -61,12 +57,10 @@ Summary:	Development files for libxfce4ui library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libxfc4ui
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gtk+2-devel >= 2:2.10.6
-#Requires:	libxfce4util-devel >= %{version}
-Requires:	libxfce4util-devel >= 4.7.3
+Requires:	gtk+2-devel >= 2:2.14.0
+Requires:	libxfce4util-devel >= %{version}
 Requires:	startup-notification-devel >= 0.8
-#Requires:	xfconf-devel >= %{version}
-Requires:	xfconf-devel >= 4.7.3
+Requires:	xfconf-devel >= %{version}
 Requires:	xorg-lib-libSM-devel
 
 %description devel
@@ -124,6 +118,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/glade3/modules/libxfce4uiglade.la
 %{?with_static_libs:%{__rm} $RPM_BUILD_ROOT%{_libdir}/glade3/modules/libxfce4uiglade.a}
+
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/{tl_PH,ur_PK}
 
 %find_lang %{name}
 
