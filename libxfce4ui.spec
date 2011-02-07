@@ -27,10 +27,9 @@ BuildRequires:	libxfce4util-devel >= %{version}
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpmbuild(macros) >= 1.601
 BuildRequires:	startup-notification-devel >= 0.8
-BuildRequires:	xfce4-dev-tools >= 4.7.0
+BuildRequires:	xfce4-dev-tools >= 4.8.0
 BuildRequires:	xfconf-devel >= %{version}
 BuildRequires:	xorg-lib-libSM-devel
-Requires:	hicolor-icon-theme
 Requires:	xfconf >= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -120,6 +119,7 @@ rm -rf $RPM_BUILD_ROOT
 %{?with_static_libs:%{__rm} $RPM_BUILD_ROOT%{_libdir}/glade3/modules/libxfce4uiglade.a}
 
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/{tl_PH,ur_PK}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %find_lang %{name}
 
@@ -146,8 +146,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libxfce4kbd-private-2.so
 %attr(755,root,root) %{_libdir}/libxfce4ui-1.so
-%{_libdir}/libxfce4kbd-private-2.la
-%{_libdir}/libxfce4ui-1.la
 %{_includedir}/xfce4/libxfce4kbd-private-2
 %{_includedir}/xfce4/libxfce4ui-1
 %{_pkgconfigdir}/libxfce4kbd-private-2.pc
