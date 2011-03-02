@@ -6,7 +6,7 @@ Summary:	Various GTK+ widgets for Xfce
 Summary(pl.UTF-8):	Różne widgety GTK+ dla Xfce
 Name:		libxfce4ui
 Version:	4.8.0
-Release:	1
+Release:	2
 License:	LGPL v2
 Group:		X11/Libraries
 Source0:	http://archive.xfce.org/xfce/4.8/src/libxfce4ui-4.8.0.tar.bz2
@@ -31,6 +31,7 @@ BuildRequires:	xfce4-dev-tools >= 4.8.0
 BuildRequires:	xfconf-devel >= %{version}
 BuildRequires:	xorg-lib-libSM-devel
 Requires:	xfconf >= %{version}
+Obsoletes:	libxfcegui4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -44,6 +45,7 @@ Summary:	libxfce4ui API documentation
 Summary(pl.UTF-8):	Dokumentacja API libxfce4ui
 Group:		Documentation
 Requires:	gtk-doc-common
+Obsoletes:	libxfcegui4-apidocs
 
 %description apidocs
 libxfce4ui API documentation.
@@ -61,6 +63,7 @@ Requires:	libxfce4util-devel >= %{version}
 Requires:	startup-notification-devel >= 0.8
 Requires:	xfconf-devel >= %{version}
 Requires:	xorg-lib-libSM-devel
+Obsoletes:	libxfcegui4-devel
 
 %description devel
 Development files for the libxfce4ui library.
@@ -73,6 +76,7 @@ Summary:	Static libxfce4ui library
 Summary(pl.UTF-8):	Statyczna biblioteka libxfce4ui
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
+Obsoletes:	libxfcegui4-static
 
 %description static
 Static libxfce4ui library.
