@@ -9,7 +9,7 @@ Version:	4.10.0
 Release:	1
 License:	LGPL v2
 Group:		X11/Libraries
-Source0:	http://archive.xfce.org/xfce/4.10/src/libxfce4ui-%{version}.tar.bz2
+Source0:	http://archive.xfce.org/xfce/4.10/src/%{name}-%{version}.tar.bz2
 # Source0-md5:	6df1ce474a3d4885aee31cda9dbc9192
 URL:		http://www.xfce.org/projects/libxfce4
 BuildRequires:	autoconf >= 2.50
@@ -31,6 +31,7 @@ BuildRequires:	xfce4-dev-tools >= 4.10.0
 BuildRequires:	xfconf-devel >= %{version}
 BuildRequires:	xorg-lib-libSM-devel
 Requires:	xfconf >= %{version}
+Requires:	%{name}-about
 Obsoletes:	libxfcegui4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -39,6 +40,17 @@ Various GTK+ widgets for Xfce.
 
 %description -l pl.UTF-8
 Różne widgety GTK+ dla Xfce.
+
+%package about
+Summary:	Information about the Xfce Desktop Environment
+Summary(pl.UTF-8):	Informacje o środowisku graficznym Xfce
+Group:		X11/Applications
+
+%description about
+Information about the Xfce Desktop Environment.
+
+%description about -l pl.UTF-8
+Informacje o środowisku graficznym Xfce.
 
 %package apidocs
 Summary:	libxfce4ui API documentation
@@ -122,7 +134,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/glade3/modules/libxfce4uiglade.la
 %{?with_static_libs:%{__rm} $RPM_BUILD_ROOT%{_libdir}/glade3/modules/libxfce4uiglade.a}
 
-%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/{tl_PH,ur_PK}
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{tl_PH,ur_PK}
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %find_lang %{name}
@@ -141,6 +153,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libxfce4ui-1.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libxfce4ui-1.so.0
 %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
+
+%files about
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/xfce4-about
+%{_desktopdir}/xfce4-about.desktop
+%{_iconsdir}/hicolor/48x48/apps/xfce4-logo.png
 
 %files apidocs
 %defattr(644,root,root,755)
