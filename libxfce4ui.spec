@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	static_libs	# don't build static library
+%bcond_with	static_libs	# don't build static library
 #
 Summary:	Various GTK+ widgets for Xfce
 Summary(pl.UTF-8):	Różne widgety GTK+ dla Xfce
