@@ -27,7 +27,7 @@ BuildRequires:	libxfce4util-devel >= %{version}
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpmbuild(macros) >= 1.601
 BuildRequires:	startup-notification-devel >= 0.8
-BuildRequires:	xfce4-dev-tools >= 4.8.0
+BuildRequires:	xfce4-dev-tools >= 4.10.0
 BuildRequires:	xfconf-devel >= %{version}
 BuildRequires:	xorg-lib-libSM-devel
 Requires:	xfconf >= %{version}
