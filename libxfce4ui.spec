@@ -10,7 +10,7 @@ Release:	1
 License:	LGPL v2
 Group:		X11/Libraries
 Source0:	http://archive.xfce.org/xfce/4.10/src/libxfce4ui-%{version}.tar.bz2
-# Source0-md5:	df9acb3328dff905bd0777b84532b69f
+# Source0-md5:	6df1ce474a3d4885aee31cda9dbc9192
 URL:		http://www.xfce.org/projects/libxfce4
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.8
