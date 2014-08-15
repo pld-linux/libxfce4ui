@@ -134,7 +134,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/glade3/modules/libxfce4uiglade.la
 %{?with_static_libs:%{__rm} $RPM_BUILD_ROOT%{_libdir}/glade3/modules/libxfce4uiglade.a}
 
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{tl_PH,ur_PK}
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ur_PK
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %find_lang %{name}
@@ -150,8 +150,12 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/libxfce4kbd-private-2.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libxfce4kbd-private-2.so.0
+%attr(755,root,root) %{_libdir}/libxfce4kbd-private-3.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libxfce4kbd-private-3.so.0
 %attr(755,root,root) %{_libdir}/libxfce4ui-1.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libxfce4ui-1.so.0
+%attr(755,root,root) %{_libdir}/libxfce4ui-2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libxfce4ui-2.so.0
 %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
 
 %files about
@@ -167,11 +171,17 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libxfce4kbd-private-2.so
+%attr(755,root,root) %{_libdir}/libxfce4kbd-private-3.so
 %attr(755,root,root) %{_libdir}/libxfce4ui-1.so
+%attr(755,root,root) %{_libdir}/libxfce4ui-2.so
 %{_includedir}/xfce4/libxfce4kbd-private-2
+%{_includedir}/xfce4/libxfce4kbd-private-3
 %{_includedir}/xfce4/libxfce4ui-1
+%{_includedir}/xfce4/libxfce4ui-2
 %{_pkgconfigdir}/libxfce4kbd-private-2.pc
+%{_pkgconfigdir}/libxfce4kbd-private-3.pc
 %{_pkgconfigdir}/libxfce4ui-1.pc
+%{_pkgconfigdir}/libxfce4ui-2.pc
 
 %if %{with static_libs}
 %files static
