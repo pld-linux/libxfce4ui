@@ -19,6 +19,7 @@ BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.16.0
 BuildRequires:	gtk+2-devel >= 2:2.14.0
+BuildRequires:	gtk+3-devel
 BuildRequires:	gtk-doc
 BuildRequires:	gtk-doc-automake
 BuildRequires:	intltool
