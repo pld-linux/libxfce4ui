@@ -1,6 +1,7 @@
 #
 # Conditional build:
-%bcond_with	static_libs	# don't build static library
+%bcond_without	glade3		# Glade3 catalog
+%bcond_with	static_libs	# static library
 #
 %define		xfce_version	4.11.0
 Summary:	Various GTK+ widgets for Xfce
@@ -23,7 +24,7 @@ BuildRequires:	gtk+3-devel
 BuildRequires:	gtk-doc
 BuildRequires:	gtk-doc-automake
 BuildRequires:	intltool
-BuildRequires:	libgladeui-devel >= 3.0.0
+%{?with_glade3:BuildRequires:	libgladeui-devel >= 3.0.0}
 BuildRequires:	libtool
 BuildRequires:	libxfce4util-devel >= %{xfce_version}
 BuildRequires:	pkgconfig >= 1:0.9.0
@@ -55,18 +56,6 @@ Information about the Xfce Desktop Environment.
 %description about -l pl.UTF-8
 Informacje o środowisku graficznym Xfce.
 
-%package apidocs
-Summary:	libxfce4ui API documentation
-Summary(pl.UTF-8):	Dokumentacja API libxfce4ui
-Group:		Documentation
-Requires:	gtk-doc-common
-
-%description apidocs
-libxfce4ui API documentation.
-
-%description apidocs -l pl.UTF-8
-Dokumentacja API libxfce4ui.
-
 %package devel
 Summary:	Development files for libxfce4ui library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libxfc4ui
@@ -97,6 +86,18 @@ Static libxfce4ui library.
 %description static -l pl.UTF-8
 Statyczna biblioteka libxfce4ui.
 
+%package apidocs
+Summary:	libxfce4ui API documentation
+Summary(pl.UTF-8):	Dokumentacja API libxfce4ui
+Group:		Documentation
+Requires:	gtk-doc-common
+
+%description apidocs
+libxfce4ui API documentation.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API libxfce4ui.
+
 %package -n glade3-libxfce4ui
 Summary:	libxfce4ui support for Glade 3
 Summary(pl.UTF-8):	Wsparcie dla libxfce4ui w Glade 3
@@ -116,13 +117,14 @@ Wsparcie dla libxfce4ui w Glade 3.
 %{__gtkdocize}
 %{__libtoolize}
 %{__aclocal}
+%{__autoconf}
 %{__autoheader}
 %{__automake}
-%{__autoconf}
 %configure \
 	--enable-gtk-doc \
-	--with-html-dir=%{_gtkdocdir} \
-	--%{?with_static_libs:en}%{!?with_static_libs:dis}able-static
+	--disable-silent-rules \
+	%{?with_static_libs:--enable-static} \
+	--with-html-dir=%{_gtkdocdir}
 
 %{__make}
 
@@ -132,19 +134,22 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%if %{with glade3}
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/glade3/modules/libxfce4uiglade.la
 %{?with_static_libs:%{__rm} $RPM_BUILD_ROOT%{_libdir}/glade3/modules/libxfce4uiglade.a}
-
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ur_PK
+%endif
+# obsoleted by pkg-config
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+# just a copy of ur
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ur_PK
 
 %find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
@@ -164,10 +169,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/xfce4-about
 %{_desktopdir}/xfce4-about.desktop
 %{_iconsdir}/hicolor/48x48/apps/xfce4-logo.png
-
-%files apidocs
-%defattr(644,root,root,755)
-%{_gtkdocdir}/%{name}
 
 %files devel
 %defattr(644,root,root,755)
@@ -191,9 +192,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libxfce4ui-1.a
 %endif
 
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/%{name}
+
+%if %{with glade3}
 %files -n glade3-libxfce4ui
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/glade3/modules/libxfce4uiglade.so
 %{_datadir}/glade3/catalogs/libxfce4ui.xml
 %{_datadir}/glade3/catalogs/libxfce4ui.xml.in
-%{_datadir}/glade3/pixmaps/*/*/*/*.png
+%{_datadir}/glade3/pixmaps/hicolor/*x*/actions/widget-libxfce4ui-xfce-titled-dialog.png
+%endif
