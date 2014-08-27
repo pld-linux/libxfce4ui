@@ -102,6 +102,7 @@ Dokumentacja API libxfce4ui.
 Summary:	libxfce4ui support for Glade 3
 Summary(pl.UTF-8):	Wsparcie dla libxfce4ui w Glade 3
 Group:		Development/Building
+Requires:	%{name} = %{version}-%{release}
 Requires:	glade3
 
 %description -n glade3-libxfce4ui
