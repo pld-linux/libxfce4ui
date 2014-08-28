@@ -14,18 +14,18 @@ Group:		X11/Libraries
 Source0:	http://archive.xfce.org/src/xfce/libxfce4ui/4.11/%{name}-%{version}.tar.bz2
 # Source0-md5:	5e44cf3470f42dbea8629fe6df72a179
 URL:		http://www.xfce.org/projects/libxfce4
-BuildRequires:	autoconf >= 2.50
+BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.16.0
-BuildRequires:	gtk+2-devel >= 2:2.14.0
-BuildRequires:	gtk+3-devel
-BuildRequires:	gtk-doc
-BuildRequires:	gtk-doc-automake
+BuildRequires:	glib2-devel >= 1:2.28.0
+BuildRequires:	gtk+2-devel >= 2:2.24.0
+BuildRequires:	gtk+3-devel >= 3.2.0
+BuildRequires:	gtk-doc >= 1.0
+BuildRequires:	gtk-doc-automake >= 1.0
 BuildRequires:	intltool
-%{?with_glade3:BuildRequires:	libgladeui-devel >= 3.0.0}
-BuildRequires:	libtool
+%{?with_glade3:BuildRequires:	libgladeui-devel >= 3.5.0}
+BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	libxfce4util-devel >= %{xfce_version}
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpmbuild(macros) >= 1.601
@@ -34,6 +34,12 @@ BuildRequires:	xfce4-dev-tools >= 4.10.0
 #BuildRequires:	xfconf-devel >= %{xfce_version}
 BuildRequires:	xfconf-devel >= 4.10.0
 BuildRequires:	xorg-lib-libSM-devel
+BuildRequires:	xorg-lib-libX11-devel
+Requires:	glib2 >= 1:2.28.0
+Requires:	gtk+2 >= 2:2.24.0
+Requires:	gtk+3 >= 3.2.0
+Requires:	libxfce4util >= %{xfce_version}
+Requires:	startup-notification >= 0.8
 #Requires:	xfconf >= %{xfce_version}
 Requires:	xfconf >= 4.10.0
 Requires:	%{name}-about
@@ -49,6 +55,7 @@ Różne widgety GTK+ dla Xfce.
 Summary:	Information about the Xfce Desktop Environment
 Summary(pl.UTF-8):	Informacje o środowisku graficznym Xfce
 Group:		X11/Applications
+Requires:	%{name} = %{version}-%{release}
 
 %description about
 Information about the Xfce Desktop Environment.
@@ -61,7 +68,8 @@ Summary:	Development files for libxfce4ui library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libxfc4ui
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gtk+2-devel >= 2:2.14.0
+Requires:	glib2-devel >= 1:2.28.0
+Requires:	gtk+2-devel >= 2:2.24.0
 Requires:	libxfce4util-devel >= %{xfce_version}
 Requires:	startup-notification-devel >= 0.8
 #Requires:	xfconf-devel >= %{xfce_version}
@@ -103,7 +111,7 @@ Summary:	libxfce4ui support for Glade 3
 Summary(pl.UTF-8):	Wsparcie dla libxfce4ui w Glade 3
 Group:		Development/Building
 Requires:	%{name} = %{version}-%{release}
-Requires:	glade3
+Requires:	glade3 >= 3.5.0
 
 %description -n glade3-libxfce4ui
 libxfce4ui support for Glade 3.
