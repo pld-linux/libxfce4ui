@@ -2,13 +2,13 @@
 # Conditional build:
 %bcond_without	glade3		# Glade3 catalog
 %bcond_with	static_libs	# static library
-#
+
 %define		xfce_version	4.12.0
 Summary:	Various GTK+ widgets for Xfce
 Summary(pl.UTF-8):	Różne widgety GTK+ dla Xfce
 Name:		libxfce4ui
 Version:	4.12.1
-Release:	1
+Release:	2
 License:	LGPL v2
 Group:		X11/Libraries
 Source0:	http://archive.xfce.org/src/xfce/libxfce4ui/4.12/%{name}-%{version}.tar.bz2
@@ -34,13 +34,13 @@ BuildRequires:	xfce4-dev-tools >= 4.12.0
 BuildRequires:	xfconf-devel >= %{xfce_version}
 BuildRequires:	xorg-lib-libSM-devel
 BuildRequires:	xorg-lib-libX11-devel
+Requires:	%{name}-about
 Requires:	glib2 >= 1:2.30.0
 Requires:	gtk+2 >= 2:2.24.0
 Requires:	gtk+3 >= 3.2.0
 Requires:	libxfce4util >= %{xfce_version}
 Requires:	startup-notification >= 0.8
 Requires:	xfconf >= %{xfce_version}
-Requires:	%{name}-about
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -97,6 +97,9 @@ Summary:	libxfce4ui API documentation
 Summary(pl.UTF-8):	Dokumentacja API libxfce4ui
 Group:		Documentation
 Requires:	gtk-doc-common
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 libxfce4ui API documentation.
