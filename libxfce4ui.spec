@@ -7,18 +7,19 @@
 Summary:	Various GTK+ widgets for Xfce
 Summary(pl.UTF-8):	Różne widgety GTK+ dla Xfce
 Name:		libxfce4ui
-Version:	4.12.1
-Release:	2
+Version:	4.13.4
+Release:	1
 License:	LGPL v2
 Group:		X11/Libraries
-Source0:	http://archive.xfce.org/src/xfce/libxfce4ui/4.12/%{name}-%{version}.tar.bz2
-# Source0-md5:	ea9fad7d059fe8f531fe8db42dabb5a9
+Source0:	http://archive.xfce.org/src/xfce/libxfce4ui/4.13/%{name}-%{version}.tar.bz2
+# Source0-md5:	b407cdab73ebd5c33c90db6bdb3ec5ff
 URL:		http://www.xfce.org/projects/libxfce4
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.30.0
+BuildRequires:	gobject-introspection-devel
 BuildRequires:	gtk+2-devel >= 2:2.24.0
 BuildRequires:	gtk+3-devel >= 3.2.0
 BuildRequires:	gtk-doc >= 1.0
@@ -26,7 +27,7 @@ BuildRequires:	gtk-doc-automake >= 1.0
 BuildRequires:	intltool
 %{?with_glade3:BuildRequires:	libgladeui-devel >= 3.5.0}
 BuildRequires:	libtool >= 2:2.2.6
-BuildRequires:	libxfce4util-devel >= %{xfce_version}
+BuildRequires:	libxfce4util-devel >= 4.13.1
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpmbuild(macros) >= 1.601
 BuildRequires:	startup-notification-devel >= 0.8
@@ -38,7 +39,7 @@ Requires:	%{name}-about
 Requires:	glib2 >= 1:2.30.0
 Requires:	gtk+2 >= 2:2.24.0
 Requires:	gtk+3 >= 3.2.0
-Requires:	libxfce4util >= %{xfce_version}
+Requires:	libxfce4util >= 4.13.1
 Requires:	startup-notification >= 0.8
 Requires:	xfconf >= %{xfce_version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -68,7 +69,7 @@ Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.28.0
 Requires:	gtk+2-devel >= 2:2.24.0
-Requires:	libxfce4util-devel >= %{xfce_version}
+Requires:	libxfce4util-devel >= 4.13.1
 Requires:	startup-notification-devel >= 0.8
 #Requires:	xfconf-devel >= %{xfce_version}
 Requires:	xfconf-devel >= 4.10.0
@@ -175,6 +176,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libxfce4ui-2.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libxfce4ui-2.so.0
 %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
+%{_libdir}/girepository-1.0/libxfce4ui-2.0.typelib
 
 %files about
 %defattr(644,root,root,755)
@@ -196,6 +198,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/libxfce4kbd-private-3.pc
 %{_pkgconfigdir}/libxfce4ui-1.pc
 %{_pkgconfigdir}/libxfce4ui-2.pc
+%{_datadir}/gir-1.0/libxfce4ui-2.0.gir
 
 %if %{with static_libs}
 %files static
@@ -213,6 +216,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/glade3/modules/libxfce4uiglade.so
 %{_datadir}/glade3/catalogs/libxfce4ui.xml
-%{_datadir}/glade3/catalogs/libxfce4ui.xml.in
+#%{_datadir}/glade3/catalogs/libxfce4ui.xml.in
 %{_datadir}/glade3/pixmaps/hicolor/*x*/actions/widget-libxfce4ui-xfce-titled-dialog.png
 %endif
