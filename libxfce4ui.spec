@@ -13,7 +13,7 @@ License:	LGPL v2
 Group:		X11/Libraries
 Source0:	http://archive.xfce.org/src/xfce/libxfce4ui/4.13/%{name}-%{version}.tar.bz2
 # Source0-md5:	9e5a805d2d557df79e571468978a2766
-URL:		https://www.xfce.org/projects/libxfce4
+URL:		https://www.xfce.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
