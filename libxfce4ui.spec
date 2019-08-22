@@ -3,16 +3,16 @@
 %bcond_without	glade3		# Glade3 catalog
 %bcond_with	static_libs	# static library
 
-%define		xfce_version	4.13.1
+%define		xfce_version	4.14.0
 Summary:	Various GTK+ widgets for Xfce
 Summary(pl.UTF-8):	Różne widgety GTK+ dla Xfce
 Name:		libxfce4ui
-Version:	4.13.6
-Release:	2
+Version:	4.14.1
+Release:	1
 License:	LGPL v2
 Group:		X11/Libraries
-Source0:	http://archive.xfce.org/src/xfce/libxfce4ui/4.13/%{name}-%{version}.tar.bz2
-# Source0-md5:	9e5a805d2d557df79e571468978a2766
+Source0:	http://archive.xfce.org/src/xfce/libxfce4ui/4.14/%{name}-%{version}.tar.bz2
+# Source0-md5:	50eae4bab5eeced186bce16fb5f802ac
 URL:		https://www.xfce.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.11
@@ -177,8 +177,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__mv} $RPM_BUILD_ROOT%{_localedir}/{hy_AM,hy}
 # just a copy of ur
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ur_PK
-# not supported by glibc (as of 2.29)
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ie
+# not supported by glibc (as of 2.30)
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{hy/hy_AM,ie}
 
 %find_lang %{name}
 
