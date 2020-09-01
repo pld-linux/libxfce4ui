@@ -101,7 +101,7 @@ Summary:	libxfce4ui API documentation
 Summary(pl.UTF-8):	Dokumentacja API libxfce4ui
 Group:		Documentation
 Requires:	gtk-doc-common
-%if "%{_rpmversion}" >= "5"
+%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
 %endif
 
@@ -117,7 +117,7 @@ Summary(pl.UTF-8):	API języka Vala do biblioteki libxfce4ui
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala-libxfce4util
-%if "%{_rpmversion}" >= "5"
+%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
 %endif
 
@@ -173,12 +173,10 @@ rm -rf $RPM_BUILD_ROOT
 
 # obsoleted by pkg-config
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
-# unify
-%{__mv} $RPM_BUILD_ROOT%{_localedir}/{hy_AM,hy}
-# just a copy of ur
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ur_PK
-# not supported by glibc (as of 2.30)
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{hy/hy_AM,ie}
+# duplicates of hy,ur
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{hy_AM,ur_PK}
+# not supported by glibc (as of 2.32)
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ie
 
 %find_lang %{name}
 
