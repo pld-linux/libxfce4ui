@@ -11,7 +11,7 @@ Version:	4.14.1
 Release:	1
 License:	LGPL v2
 Group:		X11/Libraries
-Source0:	http://archive.xfce.org/src/xfce/libxfce4ui/4.14/%{name}-%{version}.tar.bz2
+Source0:	https://archive.xfce.org/src/xfce/libxfce4ui/4.14/%{name}-%{version}.tar.bz2
 # Source0-md5:	50eae4bab5eeced186bce16fb5f802ac
 URL:		https://www.xfce.org/
 BuildRequires:	autoconf >= 2.60
