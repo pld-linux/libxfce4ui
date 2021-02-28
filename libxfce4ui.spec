@@ -100,9 +100,7 @@ Summary:	libxfce4ui API documentation
 Summary(pl.UTF-8):	Dokumentacja API libxfce4ui
 Group:		Documentation
 Requires:	gtk-doc-common
-%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 libxfce4ui API documentation.
@@ -116,9 +114,7 @@ Summary(pl.UTF-8):	API języka Vala do biblioteki libxfce4ui
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala-libxfce4util
-%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
-%endif
 
 %description -n vala-libxfce4ui
 Vala API for libxfce4ui library.
