@@ -7,12 +7,12 @@
 Summary:	Various GTK+ widgets for Xfce
 Summary(pl.UTF-8):	Różne widgety GTK+ dla Xfce
 Name:		libxfce4ui
-Version:	4.16.0
+Version:	4.16.1
 Release:	1
 License:	LGPL v2
 Group:		X11/Libraries
 Source0:	https://archive.xfce.org/src/xfce/libxfce4ui/4.16/%{name}-%{version}.tar.bz2
-# Source0-md5:	4a7035374f016efa968b776a110065d9
+# Source0-md5:	84c2716828c13e945d499bdcf39225c9
 URL:		https://www.xfce.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.11
