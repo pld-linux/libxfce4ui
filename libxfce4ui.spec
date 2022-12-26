@@ -44,7 +44,7 @@ Requires:	gtk+3 >= 3.18.0
 Requires:	libxfce4util >= %{xfce_version}
 Requires:	startup-notification >= 0.8
 Requires:	xfconf >= %{xfce_version}
-Obsoletes:	xfce4-quicklauncher-plugin
+Obsoletes:	xfce4-quicklauncher-plugin < 1.10
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -128,7 +128,7 @@ Summary(pl.UTF-8):	Wsparcie dla libxfce4ui w Glade
 Group:		Development/Building
 Requires:	%{name} = %{version}-%{release}
 Requires:	glade-libs >= 3.5.0
-Obsoletes:	glade3-libxfce4ui
+Obsoletes:	glade3-libxfce4ui < 4.16
 
 %description -n glade-libxfce4ui
 libxfce4ui support for Glade.
