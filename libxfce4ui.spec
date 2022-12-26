@@ -13,6 +13,7 @@ License:	LGPL v2
 Group:		X11/Libraries
 Source0:	https://archive.xfce.org/src/xfce/libxfce4ui/4.18/%{name}-%{version}.tar.bz2
 # Source0-md5:	e7b94990266683a0998bd25f78b208cb
+Patch0:		%{name}-link.patch
 URL:		https://www.xfce.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.11
@@ -138,6 +139,7 @@ Wsparcie dla libxfce4ui w Glade.
 
 %prep
 %setup -q
+%patch0 -p1
 
 mkdir -p m4
 

@@ -1,0 +1,13 @@
+Drop -L%{_libdir} from linking so that just built libxfce4ui is before
+older system version in linker search path.
+
+--- libxfce4ui-4.18.0/libxfce4kbd-private/Makefile.am.orig	2022-10-30 12:33:05.000000000 +0100
++++ libxfce4ui-4.18.0/libxfce4kbd-private/Makefile.am	2022-12-26 15:50:55.466362077 +0100
+@@ -61,7 +61,6 @@ libxfce4kbd_private_3_la_LDFLAGS = \
+ 	-version-info $(LIBXFCE4KBD_PRIVATE_VERINFO) \
+ 	-export-symbols-regex "^[^_].*" \
+ 	-no-undefined \
+-	$(LIBX11_LDFLAGS) \
+ 	$(PLATFORM_LDFLAGS)
+ 
+ libxfce4kbd_private_3_la_LIBADD = \
