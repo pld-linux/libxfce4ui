@@ -14,17 +14,17 @@ Group:		X11/Libraries
 Source0:	https://archive.xfce.org/src/xfce/libxfce4ui/4.20/%{name}-%{version}.tar.bz2
 # Source0-md5:	a2fc9c0a73ba606a8779813b3d910729
 URL:		https://www.xfce.org/
-BuildRequires:	autoconf >= 2.60
+BuildRequires:	autoconf >= 2.69
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	gettext-tools
+BuildRequires:	gettext-tools >= 0.19.8
 %{?with_gladeui2:BuildRequires:	glade-devel >= 3.5.0}
 BuildRequires:	glib2-devel >= 1:2.72.0
-BuildRequires:	gobject-introspection-devel >= 1.66.0
+BuildRequires:	gobject-introspection-devel >= 1.72.0
 BuildRequires:	gtk+3-devel >= 3.24.0
 BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	gtk-doc-automake >= 1.0
-BuildRequires:	intltool >= 0.35.0
+BuildRequires:	libepoxy-devel >= 1.2
 BuildRequires:	libgtop-devel >= 2.24.0
 BuildRequires:	libgudev-devel >= 232
 BuildRequires:	libtool >= 2:2.4
@@ -36,14 +36,18 @@ BuildRequires:	vala
 BuildRequires:	vala-libxfce4util >= %{xfce_version}
 BuildRequires:	xfce4-dev-tools >= %{xfce_version}
 BuildRequires:	xfconf-devel >= %{xfce_version}
-BuildRequires:	xorg-lib-libSM-devel
-BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	xorg-lib-libICE-devel >= 1.0.10
+BuildRequires:	xorg-lib-libSM-devel >= 1.2.3
+BuildRequires:	xorg-lib-libX11-devel >= 1.6.7
 Requires:	%{name}-about
 Requires:	glib2 >= 1:2.72.0
 Requires:	gtk+3 >= 3.24.0
 Requires:	libxfce4util >= %{xfce_version}
 Requires:	startup-notification >= 0.8
 Requires:	xfconf >= %{xfce_version}
+Requires:	xorg-lib-libICE >= 1.0.10
+Requires:	xorg-lib-libSM >= 1.2.3
+Requires:	xorg-lib-libX11 >= 1.6.7
 Obsoletes:	xfce4-quicklauncher-plugin < 1.10
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -70,12 +74,11 @@ Summary:	Development files for libxfce4ui library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libxfce4ui
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.50.0
-Requires:	gtk+3-devel >= 3.18.0
+Requires:	glib2-devel >= 1:2.72.0
+Requires:	gtk+3-devel >= 3.24.0
 Requires:	libxfce4util-devel >= %{xfce_version}
 Requires:	startup-notification-devel >= 0.8
 Requires:	xfconf-devel >= %{xfce_version}
-Requires:	xorg-lib-libSM-devel
 
 %description devel
 Development files for the libxfce4ui library.
@@ -171,10 +174,12 @@ rm -rf $RPM_BUILD_ROOT
 
 # obsoleted by pkg-config
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+# unify to short name
+%{__mv} $RPM_BUILD_ROOT%{_localedir}/{fa_IR,fa}
 # duplicates of hy,ur
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{hy_AM,ur_PK}
-# not supported by glibc (as of 2.32)
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{fa_IR,hye,ie}
+# not supported by glibc (as of 2.40)
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{hye,ie}
 
 %find_lang %{name}
 
