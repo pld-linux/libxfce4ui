@@ -3,26 +3,25 @@
 %bcond_without	gladeui2	# Glade catalog
 %bcond_with	static_libs	# static library
 
-%define		xfce_version	4.18.0
+%define		xfce_version	4.20.0
 Summary:	Various GTK+ widgets for Xfce
 Summary(pl.UTF-8):	Różne widgety GTK+ dla Xfce
 Name:		libxfce4ui
-Version:	4.18.6
+Version:	4.20.0
 Release:	1
 License:	LGPL v2
 Group:		X11/Libraries
-Source0:	https://archive.xfce.org/src/xfce/libxfce4ui/4.18/%{name}-%{version}.tar.bz2
-# Source0-md5:	5da8e2ce2a154c9b3557e9b317c28ddb
-Patch0:		%{name}-link.patch
+Source0:	https://archive.xfce.org/src/xfce/libxfce4ui/4.20/%{name}-%{version}.tar.bz2
+# Source0-md5:	a2fc9c0a73ba606a8779813b3d910729
 URL:		https://www.xfce.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools
 %{?with_gladeui2:BuildRequires:	glade-devel >= 3.5.0}
-BuildRequires:	glib2-devel >= 1:2.50.0
+BuildRequires:	glib2-devel >= 1:2.72.0
 BuildRequires:	gobject-introspection-devel >= 1.66.0
-BuildRequires:	gtk+3-devel >= 3.18.0
+BuildRequires:	gtk+3-devel >= 3.24.0
 BuildRequires:	gtk-doc >= 1.0
 BuildRequires:	gtk-doc-automake >= 1.0
 BuildRequires:	intltool >= 0.35.0
@@ -34,14 +33,14 @@ BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpmbuild(macros) >= 2.000
 BuildRequires:	startup-notification-devel >= 0.8
 BuildRequires:	vala
-BuildRequires:	vala-libxfce4util >= 4.18.0
-BuildRequires:	xfce4-dev-tools >= 4.18.0
+BuildRequires:	vala-libxfce4util >= %{xfce_version}
+BuildRequires:	xfce4-dev-tools >= %{xfce_version}
 BuildRequires:	xfconf-devel >= %{xfce_version}
 BuildRequires:	xorg-lib-libSM-devel
 BuildRequires:	xorg-lib-libX11-devel
 Requires:	%{name}-about
-Requires:	glib2 >= 1:2.50.0
-Requires:	gtk+3 >= 3.18.0
+Requires:	glib2 >= 1:2.72.0
+Requires:	gtk+3 >= 3.24.0
 Requires:	libxfce4util >= %{xfce_version}
 Requires:	startup-notification >= 0.8
 Requires:	xfconf >= %{xfce_version}
@@ -139,7 +138,6 @@ Wsparcie dla libxfce4ui w Glade.
 
 %prep
 %setup -q
-%patch0 -p1
 
 mkdir -p m4
 
